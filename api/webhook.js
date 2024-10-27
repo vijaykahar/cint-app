@@ -10,7 +10,7 @@ export default function handler(req, res) {
         webhookEvents.push(req.body);
         
         // Optionally limit the number of stored events
-        if (webhookEvents.length > 100) {
+        if (webhookEvents.length > 1000) {
             webhookEvents.shift(); // Remove the oldest event if over limit
         }
 

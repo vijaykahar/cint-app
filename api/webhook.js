@@ -1,7 +1,7 @@
 // api/webhook.js
 
 export default function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method !== 'POST') {
         // Log the received webhook data
         console.log('Webhook received:', req.body);
         console.log('Webhook received res:', res);

@@ -3,19 +3,18 @@
 import React from 'react';
 
 const TestWebhook = () => {
-    const sendWebhook = async () => {
+    useEffect(async() => {
         const response = await fetch('/api/webhook', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ message: 'Hello from React!' }),
         });
         
         const data = await response.json();
-        console.log(data);
-    };
-
+        console.log("coming ==> ",data);
+      });
+    
     return (
         <div>
             <button onClick={sendWebhook}>Send Webhook</button>

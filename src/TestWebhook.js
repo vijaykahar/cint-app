@@ -3,7 +3,7 @@
 import React from 'react';
 
 const TestWebhook = () => {
-    useEffect(async() => {
+    const sendWebhook = async () => {
         const response = await fetch('/api/webhook', {
             method: 'POST',
             headers: {
@@ -13,8 +13,8 @@ const TestWebhook = () => {
         
         const data = await response.json();
         console.log("coming ==> ",data);
-      });
-    
+    };
+
     return (
         <div>
             <button onClick={sendWebhook}>Send Webhook</button>

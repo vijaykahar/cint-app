@@ -5,14 +5,14 @@ import React from 'react';
 const TestWebhook = () => {
     const sendWebhook = async () => {
         const response = await fetch('/api/webhook', {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
         });
-        
-        const data = await response.json();
         console.log("coming ==> ",data);
+        const data = await response.json();
+        
     };
 
     return (

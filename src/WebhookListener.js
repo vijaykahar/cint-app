@@ -5,13 +5,17 @@ import axios from 'axios';
 
 const WebhookListener = () => {
     const [webhooks, setWebhooks] = useState([]);
+    const [loading, setLoading] = useState(true);
 
     const fetchWebhooks = async () => {
         try {
+            setLoading(true);
             const response = await axios.get('/api/webhook');
             setWebhooks(response.data);
         } catch (error) {
             console.error('Error fetching webhooks:', error);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -26,15 +30,19 @@ const WebhookListener = () => {
     return (
         <div>
             <h1>Received Webhooks</h1>
-            {webhooks.length === 0 ? (
-                <p>No webhooks received yet.</p>
+            {loading ? (
+                <p>Loading...</p>
             ) : (
                 <ul>
-                    {webhooks.map((webhook, index) => (
-                        <li key={index}>
-                            <pre>{JSON.stringify(webhook, null, 2)}</pre>
-                        </li>
-                    ))}
+                    {webhooks.length === 0 ? (
+                        <p>No webhooks received yet.</p>
+                    ) : (
+                        webhooks.map((webhook, index) => (
+                            <li key={index}>
+                                <pre>{JSON.stringify(webhook, null, 2)}</pre>
+                            </li>
+                        ))
+                    )}
                 </ul>
             )}
         </div>

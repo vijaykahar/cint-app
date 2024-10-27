@@ -1,18 +1,22 @@
 // api/webhook.js
 
+let webhookEvents = []; // Use a variable for storing events
+
 export default function handler(req, res) {
-    if (req.method !== 'POST') {
+    if (req.method === 'POST') {
         console.log('Webhook received:', req.body);
 
-        // Initialize in-memory storage if it doesn't exist
-        if (!Array.isArray(global.webhookEvents)) {
-            global.webhookEvents = [];
+        // Store the event in memory
+        webhookEvents.push(req.body);
+        
+        // Optionally limit the number of stored events
+        if (webhookEvents.length > 100) {
+            webhookEvents.shift(); // Remove the oldest event if over limit
         }
-        global.webhookEvents.push(req.body);
 
         res.status(200).send('Webhook received');
     } else if (req.method === 'GET') {
-        res.status(200).json(global.webhookEvents || []);
+        res.status(200).json(webhookEvents);
     } else {
         res.status(405).json({ message: 'Method not allowed' });
     }

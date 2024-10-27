@@ -29,7 +29,7 @@ const WebhookListener = () => {
 
     return (
         <div>
-            {/* <h1>Received Webhooks</h1>
+            <h1>Received Webhooks</h1>
             {loading ? (
                 <p>Loading...</p>
             ) : (
@@ -44,7 +44,7 @@ const WebhookListener = () => {
                         ))
                     )}
                 </ul>
-            )} */}
+            )}
         </div>
     );
 };

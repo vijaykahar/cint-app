@@ -1,13 +1,12 @@
 // src/App.js
 
 import React from 'react';
-import TestWebhook from './TestWebhook';
+import WebhookListener from './WebhookListener';
 
 function App() {
     return (
         <div>
-            <h1>Webhook Test</h1>
-            <TestWebhook />
+            <WebhookListener />
         </div>
     );
 }

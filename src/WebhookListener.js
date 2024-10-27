@@ -37,7 +37,7 @@ const WebhookListener = () => {
                     {webhooks.length === 0 ? (
                         <p>No webhooks received yet.</p>
                     ) : (
-                        webhooks.map((webhook, index) => (
+                        webhooks[0].map((webhook, index) => (
                             <li key={index}>
                                 <pre>{JSON.stringify(webhook, null, 2)}</pre>
                             </li>

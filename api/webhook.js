@@ -3,13 +3,13 @@
 export default function handler(req, res) {
     if (req.method === 'POST') {
         console.log('GitHub Webhook received:', req.body);
-        
-        // Store the event in memory for demonstration
+
+        // Initialize in-memory storage if it doesn't exist
         if (!Array.isArray(global.webhookEvents)) {
             global.webhookEvents = [];
         }
         global.webhookEvents.push(req.body);
-        
+
         res.status(200).send('Webhook received');
     } else if (req.method === 'GET') {
         res.status(200).json(global.webhookEvents || []);

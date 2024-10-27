@@ -5,7 +5,7 @@ import React from 'react';
 const TestWebhook = () => {
     const sendWebhook = async () => {
         const response = await fetch('/api/webhook', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
             },

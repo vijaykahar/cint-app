@@ -7,8 +7,12 @@ const WebhookListener = () => {
     const [webhooks, setWebhooks] = useState([]);
 
     const fetchWebhooks = async () => {
-        const response = await axios.get('/api/webhook');
-        setWebhooks(response.data);
+        try {
+            const response = await axios.get('/api/webhook');
+            setWebhooks(response.data);
+        } catch (error) {
+            console.error('Error fetching webhooks:', error);
+        }
     };
 
     useEffect(() => {
@@ -21,12 +25,18 @@ const WebhookListener = () => {
 
     return (
         <div>
-            <h1>Received GitHub Webhooks</h1>
-            <ul>
-                {webhooks.map((webhook, index) => (
-                    <li key={index}>{JSON.stringify(webhook, null, 2)}</li>
-                ))}
-            </ul>
+            <h1>Received Webhooks</h1>
+            {webhooks.length === 0 ? (
+                <p>No webhooks received yet.</p>
+            ) : (
+                <ul>
+                    {webhooks.map((webhook, index) => (
+                        <li key={index}>
+                            <pre>{JSON.stringify(webhook, null, 2)}</pre>
+                        </li>
+                    ))}
+                </ul>
+            )}
         </div>
     );
 };

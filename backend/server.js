@@ -15,7 +15,7 @@ let webhookData = [];
 
 // Webhook route
 app.post('/api/webhook', (req, res) => {
-    console.log('Webhook received:', req.body);
+    console.log('Webhook received:', res);
     webhookData.push(req.body);
     res.status(200).send('Webhook received');
 });

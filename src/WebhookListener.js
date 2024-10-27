@@ -33,7 +33,7 @@ const WebhookListener = ({ webhooks }) => {
             ) : (
                 <DataTable
                     columns={columns}
-                    data={webhooks}
+                    data={webhooks[0]}
                     pagination
                     highlightOnHover
                     striped

@@ -1,7 +1,7 @@
 // api/webhook.js
 
 export default function handler(req, res) {
-    if (req.method === 'POST') {
+    if (req.method !== 'POST') {
         console.log('Webhook received:', req.body);
 
         // Initialize in-memory storage if it doesn't exist

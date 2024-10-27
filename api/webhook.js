@@ -4,6 +4,7 @@ export default function handler(req, res) {
     if (req.method === 'POST') {
         console.log('GitHub Webhook received:', req.body);
         
+        // Store the event in memory for demonstration
         if (!Array.isArray(global.webhookEvents)) {
             global.webhookEvents = [];
         }

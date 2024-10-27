@@ -4,7 +4,6 @@ let webhookEvents = []; // Use a variable for storing events
 
 export default function handler(req, res) {
     if (req.method === 'POST') {
-        alert("post")
         console.log('Webhook received:', req.body);
 
         // Store the event in memory
@@ -17,10 +16,8 @@ export default function handler(req, res) {
 
         res.status(200).send('Webhook received');
     } else if (req.method === 'GET') {
-        alert("get")
         res.status(200).json(webhookEvents);
     } else {
-        alert("else")
         res.status(405).json({ message: 'Method not allowed' });
     }
 }
